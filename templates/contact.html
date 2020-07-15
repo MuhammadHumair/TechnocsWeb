@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Contact Us - Technocs
+{% endblock title %}
+
+{% block body %}
+	<div id="banner-area">
+		<!-- Subpage title start -->
+		<div class="banner-title-content">
+			<div class="container">
+	        	<ul class="breadcrumb" style="padding-top: 40px;">
+		            <li>Home</li>
+		            <li><a href="#">Contact</a></li>
+	          	</ul>
+          	</div>
+      	</div><!-- Subpage title end -->
+	</div><!-- Banner area end -->
+
+	{% for message in messages %}
+		{% if message %}
+			<div class="alert alert-{{message.tags}} alert-dismissible fade in">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>{{message}}</strong>
+			</div>
+	  {% endif %}
+	{% endfor %}
+	<!-- Main container start -->
+
+	<section id="main-container">
+		<div class="container">
+			<div class="row">
+	    		<div class="col-md-6">
+	    			<h3 class="title-normal">Contact Form</h3>
+	    			<form id="contact-form" action="{% url 'contact' %}" method="post" role="form">
+					{% csrf_token %}
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Name</label>
+								<input class="form-control" name="name" id="name"
+								placeholder="Name" type="text" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Email</label>
+									<input class="form-control" name="email" id="email" 
+									placeholder="Email" type="email" required>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Contact #</label>
+								<input class="form-control" name="phone" id="phone" 
+								placeholder="Contact Number" type="phone" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Subject</label>
+									<input class="form-control" name="subject" id="subject" 
+									placeholder="Subject" required>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Message</label>
+							<textarea class="form-control" name="message" id="message" 
+							placeholder="Please Provide More Details Here ..." rows="10"></textarea>
+						</div>
+						<div class="text-right"><br>
+							<button class="btn btn-primary solid blank" type="submit">Send Message</button> 
+						</div>
+					</form>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<h3 class="title-normal">Biz Industry Contact Information</h3>
+
+	    			<div class="contact-info">
+			    		<p>You are using the general bizspeak contact form which will be forwarded to our central inbox. Please note that we offer specialised contact persons on many theme and product pages on our website which you can contact there directly. We are able to process your request more quickly in common.</p>
+			    		<br>
+			    		<p><i class="fa fa-map-marker"></i> BizSpeak Center, 3021 Horizon Circle Tukwila, WA 98188 </p>
+						<p><i class="fa fa-phone info"></i>  +(785) 238-4131 </p>
+						<p><i class="fa fa-envelope-o info"></i>  info@bizindusries.com</p>
+						<p><i class="fa fa-globe info"></i>  www.bizindustry.com</p>
+    				</div>
+	    		</div>
+	    	</div>
+
+		</div><!--/ container end -->
+
+	</section><!--/ Main container end -->
+
+	<div class="gap-40"></div>
+	
+{% endblock body %}

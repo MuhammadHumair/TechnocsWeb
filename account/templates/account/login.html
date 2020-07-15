@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href={% static 'account/styles/register.css' %} rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- //Bootstrap CDN -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+</head>
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Login Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				{% for message in messages %}
+					{% if message %}
+						<div class="alert alert-{{message.tags}} alert-dismissible">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong>{{message.tags.title}}!</strong> {{message}}
+						</div>
+					{% endif %}
+				{% endfor %}
+				<form action="{% url 'login' %}" method="post">
+					{% csrf_token %}
+					<input class="text" id="login_inputfield_margin" type="text" name="username" placeholder="Username" required="True">
+					<input class="text" id="login_inputfield_margin" type="password" name="password" placeholder="Password" required="True">
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" />
+							<span>Remember Password?</span>
+						</label>
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="Login">
+				</form>
+			</div>
+		</div>
+		<!-- copyright -->
+		<div class="thetimescopy-agile">
+			<p>© 2020 Technocs Login Form. All rights reserved | Developed by <a href="https://www.thetimestech.net/" target="_blank">The Times Tech</a></p>
+		</div>
+		<!-- //copyright -->
+		<ul class="thetimes-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
+</body>
+</html>
