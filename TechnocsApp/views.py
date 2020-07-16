@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
-from adminpanel.models import Inquiry
+from adminpanel.models import *
 from django.contrib import messages
+from django.db import connection
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+    maincat = ServiceCategories.objects.filter(isActive=True)
+    cat = ServiceSubCategories.objects.filter(isActive=True)
+    
+    return render(request, 'index.html', {'categories': cat, 'maincategories': maincat})
 
 def about(request):
     return render(request, 'about.html')
