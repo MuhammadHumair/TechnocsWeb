@@ -6,8 +6,10 @@ from django.db import connection
 # Create your views here.
 
 def index(request):
-    maincat = ServiceCategories.objects.filter(isActive=True)
-    cat = ServiceSubCategories.objects.filter(isActive=True)
+    maincat = ServiceCategories.objects.filter(
+        isActive=True).order_by('categoryName')
+    cat = ServiceSubCategories.objects.filter(
+        isActive=True).order_by('subCategoryTitle')
     
     return render(request, 'index.html', {'categories': cat, 'maincategories': maincat})
 

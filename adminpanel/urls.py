@@ -12,6 +12,11 @@ urlpatterns = [
     path('inquiry', views.inquiry, name='inquiry'),
     path('inquiryStatus/<str:status>/<int:id>/', views.inquiryStatus, name='inquiryStatus'),
 
+    path('categoryTags', views.categoryTags, name='categoryTags'),
+    path('category', views.category, name='category'),
+    path('tagStatus/<str:status>/<int:id>/', views.tagStatus, name='tagStatus'),
+    path('tagCategoryStatus/<str:status>/<int:id>/', views.tagCategoryStatus, name='tagCategoryStatus'),
+
     path('services', views.services, name='services'),
     path('projects', views.projects, name='projects'),
     path('account/logout', acc_view.logout, name='logout')

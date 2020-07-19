@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Faqs, Inquiry
+from adminpanel.models import *
+from django.contrib import messages
 import datetime
 
 # Create your views here.
@@ -59,6 +60,42 @@ def inquiryStatus(request, status, id):
     else:
         Inquiry.objects.filter(id=id).update(isDealed=True, dealedDate=datetime.date.today())
         return redirect('inquiry')
+
+
+def categoryTags(request):
+    tag_data = ServiceCategories.objects.all().order_by('categoryName')
+    return render(request, 'adminpanel/category_tags.html', {'categoryTags': tag_data})
+
+
+def category(request):
+    categories = ServiceSubCategories.objects.all()
+    return render(request, 'adminpanel/category.html',{'categories':categories})
+
+def tagStatus(request, status, id):
+    if status == 'Hide':
+        tag = ServiceCategories.objects.filter(id=id)
+        tag.update(isActive=False)
+        category = ServiceSubCategories.objects.filter(category_id=id)
+        category.update(isActive=False)
+        return redirect('categoryTags')
+    else:
+        ServiceCategories.objects.filter(id=id).update(isActive=True)
+        ServiceSubCategories.objects.filter(
+            category_id=id).update(isActive=True)
+        return redirect('categoryTags')
+
+
+def tagCategoryStatus(request, status, id):
+    if status == 'Hide':
+        ServiceSubCategories.objects.filter(category_id=id).update(isActive=False)
+        return redirect('category')
+    else:
+        cat = ServiceCategories.objects.get(id=id)
+        if str(cat.isActive) == 'True':
+            ServiceSubCategories.objects.filter(category_id=id).update(isActive=True)
+        else:
+            messages.error(request,'Firstly, Activate the Tag for this category. It cannot show because its category tag is hide.')
+        return redirect('category')
 
 def services(request):
     return render(request, 'adminpanel/services.html')
