@@ -682,9 +682,9 @@ p.lead {
 }
 
 .logo {
-  width: 280px;
-  height: 60px;
-  background: url(../images/logo.png) no-repeat;
+  width: 200px;
+  height: 80px;
+  background: url(../images/technologo.png) no-repeat;
 }
 
 .navbar-brand{
@@ -1412,7 +1412,7 @@ ul.navbar-nav > li > a i{
   	border-radius: 0;
   	text-transform: uppercase;
   	line-height: 50px;
-  	margin: 0 1px 20px; 0;
+  	margin: 0 1px 20px 0;
   	padding: 0 20px;
 }
 
