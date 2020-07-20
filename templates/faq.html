@@ -37,86 +37,23 @@
 					<h3 class="title-normal">Just Find Your <strong>Answers</strong> Below:</h3>
 
 					<div class="panel-group" id="accordion">
-		              	<div class="panel panel-default">
+		              	
+						{% for faq in faqs %}
+						
+						<div class="panel panel-default">
 			                <div class="panel-heading">
 				                <h4 class="panel-title"> 
-				                	<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-									What About Excess Quantity, Termination &amp; Changes</a> 
+				                	<a data-toggle="collapse" {% if forloop.counter > 1 %}class="collapsed"{% endif %} data-parent="#accordion" href="#collapse{{ forloop.counter }}">
+									{{faq.question}}</a> 
 				                </h4>
 			                </div>
-			                <div id="collapseOne" class="panel-collapse collapse in">
+			                <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse {% if forloop.counter == 1 %}in{% endif %}">
 			                  	<div class="panel-body">
-			                    	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+			                    	<p>{{faq.answer}}</p>
 			                 	</div>
 			                </div>
-		              	</div><!--/ Panel 1 end-->
-
-		              	<div class="panel panel-default">
-			                <div class="panel-heading">
-				                <h4 class="panel-title">
-				                	<a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseTwo"> How You Deal Compliance With Laws &amp; Government?</a>
-				            	</h4>
-			                </div>
-			                <div id="collapseTwo" class="panel-collapse collapse">
-			                  <div class="panel-body">
-			                    <p>Tumblr photo booth normcore, Bushwick Brooklyn hella fixie YOLO locavore umami Shoreditch. 3 wolf moon selfies readymade slow-carb, 90's craft beer synth sustainable. Cras mattis dui ac elit sollicitudin, eu rutrum quam pharetra. Etiam consectetur nunc vitae nibh egestas scelerisque. Nam sed auctor eros, et euismod leo. Integer ut fringilla nunc. Donec eget lacus lobortis, aliquam nulla ultricies, cursus libero.</p>
-			                  </div>
-			                </div>
-		              	</div><!--/ Panel 2 end-->
-
-		              	<div class="panel panel-default">
-			                <div class="panel-heading">
-				                <h4 class="panel-title">
-				                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseThree"> How Can I Contact A Biz Industrial Web Order Representative?</a> 
-				            	</h4>
-			                </div>
-			                <div id="collapseThree" class="panel-collapse collapse">
-			                  <div class="panel-body">
-			                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-			                  </div>
-			                </div>
-		              	</div><!--/ Panel 3 end-->
-
-		              	<div class="panel panel-default">
-			                <div class="panel-heading">
-				                <h4 class="panel-title">
-				                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseFour"> Is There Anything Special I Need To Do To Make My Bill-to/ship-to Tax Exempt?</a> 
-				            	</h4>
-			                </div>
-			                <div id="collapseFour" class="panel-collapse collapse">
-			                  <div class="panel-body">
-			                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-			                  </div>
-			                </div>
-		              	</div><!--/ Panel 4 end-->
-
-		              	<div class="panel panel-default">
-			                <div class="panel-heading">
-				                <h4 class="panel-title">
-				                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseFive"> Who Do I Contact For A Biz Industrial Sheet?</a> 
-				            	</h4>
-			                </div>
-			                <div id="collapseFive" class="panel-collapse collapse">
-			                  <div class="panel-body">
-			                    <p>This is Photoshop’s version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis</p>
-			                  </div>
-			                </div>
-		              	</div><!--/ Panel 5 end-->
-
-		              	<div class="panel panel-default">
-			                <div class="panel-heading">
-				                <h4 class="panel-title">
-				                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseSix"> Do You Do Taxes Or Provide Tax Advice?</a> 
-				            	</h4>
-			                </div>
-			                <div id="collapseSix" class="panel-collapse collapse">
-			                  <div class="panel-body">
-			                    <p><span class="list-icon pull-right"> <i class="fa fa-money"> </i></span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and</p>
-			                    <a href="#">Read More</a>
-			                  </div>
-			                </div>
-		              	</div><!--/ Panel 6 end-->
-
+		              	</div>
+						{% endfor %}
 
 		            </div><!-- Accordion end -->
 					

@@ -39,7 +39,8 @@ def clients(request):
     return render(request, 'clients.html')
 
 def faqs(request):
-    return render(request, 'faq.html')
+    faqs = Faqs.objects.filter(isActive=True).all()
+    return render(request, 'faq.html',{'faqs':faqs})
 
 def team(request):
     return render(request, 'team.html')
