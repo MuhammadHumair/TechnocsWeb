@@ -29,6 +29,69 @@
 <div class="blank">
     <div class="blank-page">
         <div class="grid_3 grid_5">
+            <div class="bs-example2 bs-example-padded-bottom">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#TagModal">
+                    Add Category Tag &nbsp;&nbsp; <i class="fa fa-plus"></i>
+                </button>
+                <hr>
+                <div class="modal fade" id="TagModal" tabindex="-1" role="dialog" aria-labelledby="TagModalLabel"
+                    aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="{% url 'categoryTags' %}" method="POST" role="form" class="form-horizontal">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×</button>
+                                    <h2 class="modal-title">Add Tag</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Tag Name</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-tag"></i>
+                                                    </span>
+                                                    <input type="text" name="tagname" class="form-control1"
+                                                        placeholder="Enter Tag Name" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Tag Title</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-tag"></i>
+                                                    </span>
+                                                    <input type="text" name="tagtitle" class="form-control1"
+                                                        placeholder="Enter Tag Title" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-9">
+                                                <div class="checkbox-inline1">
+                                                    <label>
+                                                        <input type="checkbox" name="isActive">&nbsp;Active
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-primary" value="Save" />
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            </div>
             <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                 <thead>
                     <tr>

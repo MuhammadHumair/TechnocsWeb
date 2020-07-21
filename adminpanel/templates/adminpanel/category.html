@@ -37,6 +37,81 @@
                 </div>
                 {% endif %}
             {% endfor %}
+            <div class="bs-example2 bs-example-padded-bottom">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#CategoryModal">
+                    Add Category &nbsp;&nbsp; <i class="fa fa-plus"></i>
+                </button>
+                <hr>
+                <div class="modal fade" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="CategoryModalLabel"
+                    aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="{% url 'category' %}" method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×</button>
+                                    <h2 class="modal-title">Add Category</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Tag Category</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-tag"></i>
+                                                    </span>
+                                                    <select name="categorytag" id="selector1" class="form-control1" required>
+                                                        <option>Select</option>
+                                                        {% for tag in tags %}
+                                                        <option value={{tag.id}}>{{tag.categoryTitle}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Category Title</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-tag"></i>
+                                                    </span>
+                                                    <input type="text" name="categorytitle" class="form-control1"
+                                                        placeholder="Enter Category Title" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-9">
+                                                <label for="exampleInputFile">File input</label>
+                                                <input type="file" id="exampleInputFile" name="image" required>
+                                                <p class="help-block">Select Category Image</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-9">
+                                                <div class="checkbox-inline1">
+                                                    <label>
+                                                        <input type="checkbox" name="isActive">&nbsp;Active
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-primary" value="Save" />
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            </div>
             <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                 <thead>
                     <tr>

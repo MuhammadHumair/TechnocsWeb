@@ -63,13 +63,40 @@ def inquiryStatus(request, status, id):
 
 
 def categoryTags(request):
-    tag_data = ServiceCategories.objects.all().order_by('categoryName')
+    if request.method == "POST":
+        catname = request.POST["tagname"]
+        cattitle = request.POST["tagtitle"]
+        status = request.POST["isActive"]
+        if status == "on":
+            status = True
+        else:
+            status = False
+        query = ServiceCategories.objects.create(categoryName=catname, categoryTitle=cattitle, isActive=status)
+        query.save()
+        return redirect('categoryTags')
+    else:
+        tag_data = ServiceCategories.objects.all().order_by('categoryName')
     return render(request, 'adminpanel/category_tags.html', {'categoryTags': tag_data})
 
 
 def category(request):
-    categories = ServiceSubCategories.objects.all()
-    return render(request, 'adminpanel/category.html',{'categories':categories})
+    if request.method == "POST":
+        cattag = request.POST["categorytag"]
+        cattitle = request.POST["categorytitle"]
+        catimg = request.FILES["image"]
+        status = request.POST["isActive"]
+        if status == "on":
+            status = True
+        else:
+            status = False
+        
+        query = ServiceSubCategories.objects.create(category_id=cattag, subCategoryTitle=cattitle, image=catimg, isActive=status)
+        query.save()
+        return redirect('category')
+    else:
+        categories = ServiceSubCategories.objects.all()
+        tags = ServiceCategories.objects.all()
+    return render(request, 'adminpanel/category.html',{'categories':categories,'tags':tags})
 
 def tagStatus(request, status, id):
     if status == 'Hide':
