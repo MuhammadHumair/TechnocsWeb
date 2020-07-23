@@ -156,5 +156,29 @@ def clientStatus(request, status, id):
         return redirect('clients')
 
 def team(request):
-    return render(request, 'adminpanel/team.html')
+    if request.method == 'POST':
+        name = request.POST['name']
+        designation = request.POST['designation']
+        img = request.FILES['picture']
+        status = request.POST["isActive"]
+        if status == "on":
+            status = True
+        else:
+            status = False
+
+        query = Team.objects.create(name=name, designation=designation, image=img, isActive=status)
+        query.save()
+        return redirect('team')
+    else:
+        teams = Team.objects.all()
+    return render(request, 'adminpanel/team.html',{'teams':teams})
     
+
+def teamStatus(request, status, id):
+    if status == 'Hide':
+        team = Team.objects.filter(id=id)
+        team.update(isActive=False)
+        return redirect('team')
+    else:
+        Team.objects.filter(id=id).update(isActive=True)
+        return redirect('team')

@@ -46,5 +46,6 @@ def faqs(request):
 
 
 def ourteam(request):
-    return render(request, 'team.html')
+    teams = Team.objects.filter(isActive=True).all().order_by('name')
+    return render(request, 'team.html',{'teams':teams})
 

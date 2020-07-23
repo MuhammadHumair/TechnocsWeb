@@ -24,6 +24,7 @@ urlpatterns = [
     path('clientStatus/<str:status>/<int:id>/', views.clientStatus, name='clientStatus'),
 
     path('team', views.team, name='team'),
-    
+    path('teamStatus/<str:status>/<int:id>/', views.teamStatus, name='teamStatus'),
+
     path('account/logout', acc_view.logout, name='logout')
 ]
