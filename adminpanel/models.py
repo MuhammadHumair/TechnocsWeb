@@ -75,4 +75,22 @@ class Services(models.Model):
     class Meta:
         db_table = 'Services'
     
+class Clients(models.Model):
+    clientLogo = models.ImageField(
+        upload_to='static/uploads/clients', height_field=None, width_field=None, max_length=None)
+    isActive = models.BooleanField()
+
+    class Meta:
+        db_table = 'Clients'
+
+class Team(models.Model):
+    name = models.CharField(max_length=50)
+    designation = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='static/uploads/team', height_field=None, width_field=None, max_length=None)
+    isActive = models.BooleanField()
+
+    def __str__(self):
+        return self.name + " => " + self.designation
     
+    class Meta:
+        db_table = 'Team'

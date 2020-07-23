@@ -1,0 +1,94 @@
+{% extends 'adminpanel/base.html' %}
+{% load static %}
+
+{% block title %} Our Team {% endblock title %}
+
+<!-- CSS -->
+
+{% block css %}
+    <!-- MDBootstrap Datatables  -->
+    <link href="{% static 'adminpanel/css/addons/datatables.min.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+<!-- Script -->
+
+{% block script %}
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="{% static 'adminpanel/js/addons/datatables.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+{% endblock script %}
+
+{% block breadcrumb %}Inquiry{% endblock breadcrumb %}
+
+{% block body %}
+<div class="blank">
+    <div class="blank-page">
+        <div class="grid_3 grid_5">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th class="th-sm">Name</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">Phone</th>
+                        <th class="th-sm">Subject</th>
+                        <th class="th-sm">Message</th>
+                        <th class="th-sm">Inquiry Date</th>
+                        <th class="th-sm">Dealed Date</th>
+                        <th class="th-sm">Status</th>
+                        <th class="th-sm">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inquiry in inquiries  %}
+                    <tr>
+                        <td>{{inquiry.name}}</td>
+                        <td>{{inquiry.email}}</td>
+                        <td>{{inquiry.phone}}</td>
+                        <td>{{inquiry.subject}}</td>
+                        <td>{{inquiry.message}}</td>
+                        <td>{{inquiry.inquiryDate}}</td>
+                        <td>{{inquiry.dealedDate}}</td>
+                        <td>
+                            {% if inquiry.isDealed == True %}
+                                Dealed
+                            {% else %}
+                                Not Dealed
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if inquiry.isDealed == True %}
+                                <a href="{% url 'inquiryStatus' 'undealed' inquiry.id %}" class="btn btn-danger">
+                                    Undealed
+                                </a>
+                            {% else %}
+                                <a href="{% url 'inquiryStatus' 'dealed' inquiry.id %}" class="btn btn-success">
+                                    Dealed
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th class="th-sm">Name</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">Phone</th>
+                        <th class="th-sm">Subject</th>
+                        <th class="th-sm">Message</th>
+                        <th class="th-sm">Inquiry Date</th>
+                        <th class="th-sm">Dealed Date</th>
+                        <th class="th-sm">Status</th>
+                        <th class="th-sm">Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}

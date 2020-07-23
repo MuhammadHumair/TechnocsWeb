@@ -19,5 +19,11 @@ urlpatterns = [
 
     path('services', views.services, name='services'),
     path('projects', views.projects, name='projects'),
+
+    path('clients', views.clients, name='clients'),
+    path('clientStatus/<str:status>/<int:id>/', views.clientStatus, name='clientStatus'),
+
+    path('team', views.team, name='team'),
+    
     path('account/logout', acc_view.logout, name='logout')
 ]

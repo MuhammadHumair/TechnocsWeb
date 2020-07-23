@@ -10,8 +10,9 @@ def index(request):
         isActive=True).order_by('categoryName')
     cat = ServiceSubCategories.objects.filter(
         isActive=True).order_by('subCategoryTitle')
+    clients = Clients.objects.filter(isActive=True).all()
     
-    return render(request, 'index.html', {'categories': cat, 'maincategories': maincat})
+    return render(request, 'index.html', {'categories': cat, 'maincategories': maincat,'clients':clients})
 
 def about(request):
     return render(request, 'about.html')
@@ -35,13 +36,15 @@ def contact(request):
 def career(request):
     return render(request, 'career.html')
 
-def clients(request):
-    return render(request, 'clients.html')
+def ourclients(request):
+    clients = Clients.objects.filter(isActive=True).all()
+    return render(request, 'clients.html',{'clients':clients})
 
 def faqs(request):
     faqs = Faqs.objects.filter(isActive=True).all()
     return render(request, 'faq.html',{'faqs':faqs})
 
-def team(request):
+
+def ourteam(request):
     return render(request, 'team.html')
 

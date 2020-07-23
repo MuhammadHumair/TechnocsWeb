@@ -129,3 +129,32 @@ def services(request):
 
 def projects(request):
     return render(request, 'adminpanel/projects.html')
+
+def clients(request):
+    if request.method == 'POST':
+        logo = request.FILES['clientlogo']
+        status = request.POST["isActive"]
+        if status == "on":
+            status = True
+        else:
+            status = False
+
+        query = Clients.objects.create(clientLogo=logo, isActive=status)
+        query.save()
+        return redirect('clients')
+    else:
+        clients = Clients.objects.all()
+    return render(request, 'adminpanel/clients.html', {'clients': clients})
+
+def clientStatus(request, status, id):
+    if status == 'Hide':
+        client = Clients.objects.filter(id=id)
+        client.update(isActive=False)
+        return redirect('clients')
+    else:
+        Clients.objects.filter(id=id).update(isActive=True)
+        return redirect('clients')
+
+def team(request):
+    return render(request, 'adminpanel/team.html')
+    

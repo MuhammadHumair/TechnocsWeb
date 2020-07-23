@@ -34,84 +34,20 @@
 			<div class="row">
 				<div class="col-md-12">
 					<ul class="client-page-logo">
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client1.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client2.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client3.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client4.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client5.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-					</ul>
-
-					<div class="gap-20"></div>
-
-					<ul class="client-page-logo">
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client6.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client7.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client8.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client9.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
-						<li>
-							<div class="client-logo-item">
-					          <a href="#">
-					            <img src="{% static 'images/clients/client10.png' %}" alt="client">
-					          </a>
-				        	</div>
-						</li>
+						{% for client in clients %}
+							<li>
+								<div class="client-logo-item">
+								<a href="#">
+									<img src="{{client.clientLogo}}" alt="client">
+								</a>
+								</div>
+							</li>
+							{% if forloop.counter == 5 or forloop.counter == 10 or forloop.counter == 15 or forloop.counter == 20 %}
+							<div class="gap-20"></div>
+							{% endif %}
+						{% endfor %}
 					</ul>
 				</div><!--/ 1st Clients end -->
-				
 
 			</div><!--/ Content row end -->
 
