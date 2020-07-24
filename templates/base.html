@@ -163,8 +163,8 @@
 	                        </ul>
                     	</div>
                     </li>
-					<li class="{% if request.resolver_match.url_name == "industries" %}active{% endif %}">
-                   		<a href="#">Industries</a>
+					<li class="{% if request.resolver_match.url_name == "industries" or request.resolver_match.url_name == "ourservice" %}active{% endif %}">
+                   		<a href="{% url 'industries' %}">Industries</a>
                    	</li>
 					<li class="{% if request.resolver_match.url_name == "products" %}active{% endif %}">
                    		<a href="#">Products</a>

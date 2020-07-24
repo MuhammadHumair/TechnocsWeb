@@ -42,8 +42,10 @@ class ServiceCategories(models.Model):
         db_table = 'ServiceCategories'
 
 class ServiceSubCategories(models.Model):
-    category = models.ForeignKey(ServiceCategories, related_name='subcategory', on_delete=models.CASCADE)
+    category = models.ForeignKey(ServiceCategories, related_name='subcategory', on_delete=models.PROTECT)
     subCategoryTitle = models.CharField(max_length=50)
+    description = models.CharField(max_length=300)
+    features = models.CharField(max_length=150)
     image = models.ImageField(
         upload_to='static/uploads/categories', height_field=None, width_field=None, max_length=None)
     isActive = models.BooleanField()
@@ -52,6 +54,7 @@ class ServiceSubCategories(models.Model):
         db_table = 'ServiceSubCategories'
 
 class Services(models.Model):
+    industry = models.ForeignKey(ServiceSubCategories, on_delete=models.PROTECT)
     serviceTitle = models.CharField(max_length=50)
     descriptionTitle = models.CharField(max_length=100)
     description = models.CharField(max_length=300)

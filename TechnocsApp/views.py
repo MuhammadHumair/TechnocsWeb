@@ -40,6 +40,7 @@ def ourclients(request):
     clients = Clients.objects.filter(isActive=True).all()
     return render(request, 'clients.html',{'clients':clients})
 
+
 def faqs(request):
     faqs = Faqs.objects.filter(isActive=True).all()
     return render(request, 'faq.html',{'faqs':faqs})
@@ -47,5 +48,15 @@ def faqs(request):
 
 def ourteam(request):
     teams = Team.objects.filter(isActive=True).all().order_by('name')
-    return render(request, 'team.html',{'teams':teams})
+    return render(request, 'team.html', {'teams': teams})
+    
+
+def industries(request):
+    data = ServiceSubCategories.objects.filter(
+        isActive=True).all().order_by('subCategoryTitle')
+    return render(request, 'industries.html',{'industries':data})
+
+
+def ourservice(request):
+    return render(request, 'service.html')
 
